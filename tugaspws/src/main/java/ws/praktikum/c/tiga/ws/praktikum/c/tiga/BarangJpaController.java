@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import ws.praktikum.c.tiga.ws.praktikum.c.tiga.exceptions.NonexistentEntityException;
 import ws.praktikum.c.tiga.ws.praktikum.c.tiga.exceptions.PreexistingEntityException;
-
+//
 /**
  *
  * @author Nando
