@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Nando
  */
+
 @Service
 public class BarangServicelmpl implements BarangService {
 
@@ -72,20 +73,20 @@ public class BarangServicelmpl implements BarangService {
     }
 
     @Override
-    public Barang getBarangById(int barangId) {
-        return repository.findById(barangId).get();
+    public Barang getBarangById(int id) {
+        return repository.findById(id).get();
     }
 
     @Override
     public void updateBarang(Barang barang) {
-        Barang barangDB = repository.findById(barang.getIdBarang()).orElseThrow();
+        Barang barangDB = repository.findById(barang.getId()).orElseThrow();
         repository.save(barang);
     }
 
     @Override
-    public void deleteBarangById(int barangId) {
+    public void deleteBarangById(int id) {
         try {
-            repository.deleteById(barangId);
+            repository.deleteById(id);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

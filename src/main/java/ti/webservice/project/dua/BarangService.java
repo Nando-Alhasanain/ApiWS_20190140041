@@ -28,8 +28,8 @@ public interface BarangService {
     */
     
     Barang addBarang(Barang barang);
-    Barang getBarangById(int barangId);
+    Barang getBarangById(int id);
     void updateBarang(Barang barang);
-    void deleteBarangById(int barangId);
+    void deleteBarangById(int id);
     List<Barang> getAllBarang(); 
 }

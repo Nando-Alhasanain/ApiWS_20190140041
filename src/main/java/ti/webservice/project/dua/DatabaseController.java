@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Nando
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/barang")
 //@Controller
 public class DatabaseController {
@@ -115,12 +117,12 @@ public class DatabaseController {
     }
     
     @GetMapping("/{id}")
-    public Barang getBarangById(@PathVariable("id") int barangId){
-        return barangService.getBarangById(barangId);
+    public Barang getBarangById(@PathVariable("id") int id){
+        return barangService.getBarangById(id);
     }
 
     
-    @PutMapping("/updateBarang")
+    @PutMapping("/updatebarang")
     public ResponseEntity<String> updateBarang(@RequestBody Barang barang){
         try{
             barangService.updateBarang(barang);

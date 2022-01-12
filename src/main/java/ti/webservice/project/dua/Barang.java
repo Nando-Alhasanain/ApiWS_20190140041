@@ -8,8 +8,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,66 +18,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Nando
  */
+
 @Entity
 @Table(name = "barang")
 @XmlRootElement
-
-/*
-public class Barang { 
-    
-    
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer idBarang;
-    
-    @Column(name = "nama barang")
-    private String namaBarang;
-    
-    @Column(name = "jumlah barang")
-    private Integer jumlah;
-    
-    @Column(name = "Harga barang")
-    private Integer harga;
-
-    
-    public Integer getIdBarang() {
-        return idBarang;
-    }
-
-    public void setIdBarang(Integer idBarang) {
-        this.idBarang = idBarang;
-    }
-
-    public String getNamaBarang() {
-        return namaBarang;
-    }
-
-    public void setNamaBarang(String namaBarang) {
-        this.namaBarang = namaBarang;
-    }
-
-    public Integer getJumlah() {
-        return jumlah;
-    }
-
-    public void setJumlah(Integer jumlah) {
-        this.jumlah = jumlah;
-    }
-
-    public Integer getHarga() {
-        return harga;
-    }
-
-    public void setHarga(Integer harga) {
-        this.harga = harga;
-    }
-    
-     
-}
- */
 @NamedQueries({
     @NamedQuery(name = "Barang.findAll", query = "SELECT b FROM Barang b"),
-    @NamedQuery(name = "Barang.findByIdBarang", query = "SELECT b FROM Barang b WHERE b.idBarang = :idBarang"),
+    @NamedQuery(name = "Barang.findById", query = "SELECT b FROM Barang b WHERE b.id = :id"),
     @NamedQuery(name = "Barang.findByNamaBarang", query = "SELECT b FROM Barang b WHERE b.namaBarang = :namaBarang"),
     @NamedQuery(name = "Barang.findByJumlah", query = "SELECT b FROM Barang b WHERE b.jumlah = :jumlah"),
     @NamedQuery(name = "Barang.findByHarga", query = "SELECT b FROM Barang b WHERE b.harga = :harga")})
@@ -87,40 +32,36 @@ public class Barang implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_barang")
-    private Integer idBarang;
-    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Column(name = "nama_barang")
     private String namaBarang;
-    @Basic(optional = false)
     @Column(name = "jumlah")
     private Integer jumlah;
-    @Basic(optional = false)
     @Column(name = "harga")
     private Integer harga;
 
     public Barang() {
     }
 
-    public Barang(Integer idBarang) {
-        this.idBarang = idBarang;
+    public Barang(Integer id) {
+        this.id = id;
     }
 
-    public Barang(Integer idBarang, String namaBarang, Integer jumlah, Integer harga) {
-        this.idBarang = idBarang;
+    public Barang(Integer id, String namaBarang, Integer jumlah, Integer harga) {
+        this.id = id;
         this.namaBarang = namaBarang;
         this.jumlah = jumlah;
         this.harga = harga;
     }
 
-    public Integer getIdBarang() {
-        return idBarang;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdBarang(Integer idBarang) {
-        this.idBarang = idBarang;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNamaBarang() {
@@ -150,7 +91,7 @@ public class Barang implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idBarang != null ? idBarang.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -161,7 +102,7 @@ public class Barang implements Serializable {
             return false;
         }
         Barang other = (Barang) object;
-        if ((this.idBarang == null && other.idBarang != null) || (this.idBarang != null && !this.idBarang.equals(other.idBarang))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -169,8 +110,8 @@ public class Barang implements Serializable {
 
     @Override
     public String toString() {
-        //return "ti.webservice.project.dua.Barang[ idBarang=" + idBarang + " ]";
-        return "idBarang = " + getIdBarang() + "Nama barang = " + getNamaBarang() + "jumlah = " + getJumlah() + "Harga = " + getHarga();
+        //return "ti.webservice.project.dua.Barang[ id=" + id + " ]";
+        return "id = " + getId() + "Nama barang = " + getNamaBarang() + "jumlah = " + getJumlah() + "Harga = " + getHarga();
     }
 
 }
